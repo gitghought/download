@@ -27,6 +27,11 @@ public class MyService extends Service {
                 download.execute(url);
             }
         }
+        public void cancleDownload() {
+            if (download != null) {
+                download.cancleTask();
+            }
+        }
     }
 
     public MyService() {

@@ -78,9 +78,18 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
         StringBuilder sb = new StringBuilder();
         String line;
         while ((line = br.readLine()) != null) {
+            MyLog.d(MyLog.TAG, "in task while");
+            if (isCancelTask == true) {
+                break;
+            }
             sb.append(line);
         }
 
         return sb.toString();
+    }
+
+    private boolean isCancelTask = false;
+    public void cancleTask() {
+        this.isCancelTask = true;
     }
 }
