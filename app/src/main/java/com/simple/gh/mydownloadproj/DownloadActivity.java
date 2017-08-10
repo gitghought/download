@@ -42,7 +42,7 @@ public class DownloadActivity extends AppCompatActivity {
         btnStartDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binder.startDownload("btn onclick start download");
+                binder.startDownload("http://192.168.197.84/test.xml");
             }
         });
     }
