@@ -60,18 +60,6 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
         return null;
     }
     private String getString(InputStream pIS) throws IOException {
-//        byte[] bys = new byte[64];
-//
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//
-//        int len;
-//        while ((len = pIS.read(bys)) != -1) {
-//            baos.write(bys);
-//        }
-//        return new String(baos.toByteArray());
-
-
-
         InputStreamReader reader = new InputStreamReader(pIS);
         BufferedReader br = new BufferedReader(reader);
 
