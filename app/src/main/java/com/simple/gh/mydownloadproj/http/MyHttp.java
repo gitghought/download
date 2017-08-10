@@ -1,9 +1,12 @@
 package com.simple.gh.mydownloadproj.http;
 
+import android.support.annotation.NonNull;
+
 import com.simple.gh.mydownloadproj.mycallback.MyHttpURLListener;
 import com.simple.gh.mydownloadproj.utils.MyLog;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -17,7 +20,8 @@ import java.net.URL;
 
 public class MyHttp {
     public static HttpURLConnection conn = null;
-    private static BufferedReader br;
+//    private static BufferedReader br;
+    private static InputStream is;
 
     public static void sendRequest(String url, MyHttpURLListener listener) {
         try {
@@ -27,33 +31,39 @@ public class MyHttp {
             conn.setReadTimeout(8000);
 
             //
-            InputStream is = conn.getInputStream();
-            InputStreamReader reader = new InputStreamReader(is);
-            br = new BufferedReader(reader);
+            is = conn.getInputStream();
 
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = br.readLine()) != null) {
-                sb.append(line);
-            }
-
-            listener.onFinished(sb.toString() + "back");
-
+            listener.onFinished(is);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                conn.disconnect();
-            }
         }
+    }
+
+    @NonNull
+    private static String getString(InputStream pIS) throws IOException {
+//        byte[] bys = new byte[64];
+//
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//
+//        int len;
+//        while ((len = pIS.read(bys)) != -1) {
+//            baos.write(bys);
+//        }
+//        return new String(baos.toByteArray());
+
+
+
+        InputStreamReader reader = new InputStreamReader(pIS);
+        BufferedReader br = new BufferedReader(reader);
+
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = br.readLine()) != null) {
+            sb.append(line);
+        }
+
+        return sb.toString();
     }
 }
