@@ -7,9 +7,12 @@ import android.util.Log;
  */
 
 public class MyLog {
+    public static final String TAG = "MyLog";
+    public static StackTraceElement[] eles /*= new Throwable().getStackTrace()*/;
 
     public static void d(String TAG, String msg) {
-        Log.d(TAG, msg);
+        eles = new Throwable().getStackTrace();
+        Log.d(TAG, "in " + eles[1].getFileName() + ":" + eles[1].getMethodName() + "@" +  eles[1].getLineNumber() + msg);
     }
 
 }
