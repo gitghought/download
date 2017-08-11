@@ -39,39 +39,29 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
             @Override
             public void onFinished(InputStream is) {
                 DownloadTask.this.is = is;
+
+                try {
+                    String str = getString(is);
+                    MyLog.d(MyLog.TAG, "str = " + " " + str);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (is != null) {
+                        try {
+                            is.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
             }
         });
 
-        try {
-            String str = this.getString(this.is);
-            MyLog.d(MyLog.TAG, "str = " + " " + str);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (this.is != null) {
-                try {
-                    this.is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+
 
         return null;
     }
     private String getString(InputStream pIS) throws IOException {
-//        byte[] bys = new byte[64];
-//
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//
-//        int len;
-//        while ((len = pIS.read(bys)) != -1) {
-//            baos.write(bys);
-//        }
-//        return new String(baos.toByteArray());
-
-
-
         InputStreamReader reader = new InputStreamReader(pIS);
         BufferedReader br = new BufferedReader(reader);
 
