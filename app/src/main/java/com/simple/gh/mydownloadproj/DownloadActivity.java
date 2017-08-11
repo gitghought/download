@@ -17,6 +17,12 @@ public class DownloadActivity extends AppCompatActivity {
     private ServiceConnection conn;
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(conn);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download);
