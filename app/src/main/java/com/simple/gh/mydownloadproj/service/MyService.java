@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 
-import com.simple.gh.mydownloadproj.DownloadActivity;
 import com.simple.gh.mydownloadproj.mycallback.DownloadListener;
 import com.simple.gh.mydownloadproj.thread.DownloadTask;
 import com.simple.gh.mydownloadproj.utils.MyLog;

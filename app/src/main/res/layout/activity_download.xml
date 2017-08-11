@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.simple.gh.mydownloadproj.DownloadActivity">
+    tools:context="com.simple.gh.mydownloadproj.activity.DownloadActivity">
 
     <Button
         android:text="Start Download"
@@ -18,4 +18,14 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="12dp"
         android:id="@+id/btn_start_download" />
+
+    <Button
+        android:text="Leak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_start_download"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="69dp"
+        android:id="@+id/btn_leak" />
 </RelativeLayout>
