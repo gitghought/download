@@ -57,8 +57,6 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
             }
         });
 
-
-
         return null;
     }
     private String getString(InputStream pIS) throws IOException {
