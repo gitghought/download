@@ -54,6 +54,15 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
         public MyViewHolder(View itemView) {
             super(itemView);
             this.tvName = (TextView) itemView.findViewById(R.id.tv_name);
+            this.tvName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = MyViewHolder.this.getAdapterPosition();
+
+                    MyTask task = tasks.get(pos);
+                    MyLog.d(MyLog.TAG, "name = " + task.getmName());
+                }
+            });
         }
     }
 }
