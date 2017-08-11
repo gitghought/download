@@ -39,23 +39,25 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
             @Override
             public void onFinished(InputStream is) {
                 DownloadTask.this.is = is;
+
+                try {
+                    String str = getString(is);
+                    MyLog.d(MyLog.TAG, "str = " + " " + str);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (is != null) {
+                        try {
+                            is.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
             }
         });
 
-        try {
-            String str = this.getString(this.is);
-            MyLog.d(MyLog.TAG, "str = " + " " + str);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (this.is != null) {
-                try {
-                    this.is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+
 
         return null;
     }
